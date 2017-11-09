@@ -37,8 +37,8 @@ public class Main {
                 sendPost(sensores[i], "notok");
                 double aleatorio = Math.floor(Math.random()*101);
                 System.out.println("Aleatorio : "+aleatorio);
-                if (i%20000==0 && i>1) generarAlarma(aleatorio, idMax,idMin, sensores, controlMovimiento,controlHumo,controlTemperatura,i);
-                if (i%24000==0 && i>1) limpiarAlarmas(controlHumo,controlMovimiento,controlTemperatura);
+                if (i%10000==0 && i>1) generarAlarma(aleatorio, idMax,idMin, sensores, controlMovimiento,controlHumo,controlTemperatura,i);
+                if (i%20000==0 && i>1) limpiarAlarmas(controlHumo,controlMovimiento,controlTemperatura);
             }
         }
 
@@ -143,7 +143,11 @@ public class Main {
     }
     public static void generarAlarmaHumo(sensor s,Queue <sensor> controlHumo){
         s.setHumo(true);
-        controlHumo.add(s);
+        s.addHumo();
+        if(s.getCountHumo()==3) {
+            controlHumo.add(s);
+            s.resetCountHumo();
+        }
     }
     public static void subirTemperatura(sensor s, Queue <sensor> controlTemperatura) throws Exception {
         s.subirTemperatura();

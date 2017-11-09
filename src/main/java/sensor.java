@@ -13,7 +13,8 @@ public class sensor {
     boolean movimiento;
     int temperatura;
     boolean humo;
-    double tempMaxima;
+    int tempMaxima;
+    int countHumo;
 
 
     public sensor(int id) {
@@ -24,7 +25,7 @@ public class sensor {
         humo=false;
         temperatura=0;
         tempMaxima = (int) Math.floor(Math.random()*50) +1;
-
+        countHumo=0;
 
     }
 
@@ -46,7 +47,7 @@ public class sensor {
         return humo;
     }
     public void setHumo(boolean h){ humo = h; }
-    public double getTempMax(){ return tempMaxima; }
+    public int getTempMax(){ return tempMaxima; }
 
 
     public void subirTemperatura(){
@@ -54,6 +55,15 @@ public class sensor {
     }
     public void bajarTemperatura(){
         temperatura-=2;
+    }
+    public void addHumo(){
+        countHumo++;
+    }
+    public void resetCountHumo(){
+        countHumo=0;
+    }
+    public int getCountHumo(){
+        return countHumo;
     }
 
 
