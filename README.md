@@ -4,9 +4,12 @@ Aplicación que simula la generación aleatoria y el envío del estado del rango
 
 En este ejemplo el programa creará 25.000 sensores que estarán enviando continuamente su estado, el cual está compuesto por los campos movimiento, humo, temperatura actual y temperatura máxima:
 
-java -jar fakeGen-fakeGen-1.0-SNAPSHOT.jar 1 25000
+> java -jar fakeGen-fakeGen-1.0-SNAPSHOT.jar 1 25000
 
 Genera números aleatorios con los que activa alarmas en estos sensores según una frecuencia establecida en la aplicación. 
+
+La aplicación también gestiona la recuperación de las alarmas que previamente se han activado y envía esta recuperación al destino correspondiente.
+
 
 La salida del programa será:
 
