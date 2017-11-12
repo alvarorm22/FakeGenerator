@@ -51,7 +51,7 @@ public class sensor {
 
 
     public void subirTemperatura(){
-        temperatura+=5;
+        temperatura+=10;
     }
     public void bajarTemperatura(){
         temperatura-=2;

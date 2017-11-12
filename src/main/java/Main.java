@@ -86,6 +86,7 @@ public class Main {
 
         if (humo!=null){
             humo.setHumo(false);
+            humo.resetCountHumo();
             System.out.println("Se recupera la alerta de humo para el sensor con id : " + humo.getIdSensor());
             sendPost(humo, "ok");
         }
@@ -144,7 +145,7 @@ public class Main {
     public static void generarAlarmaHumo(sensor s,Queue <sensor> controlHumo){
         s.setHumo(true);
         s.addHumo();
-        if(s.getCountHumo()==3) {
+        if(s.getCountHumo()>=3) {
             controlHumo.add(s);
             s.resetCountHumo();
         }
