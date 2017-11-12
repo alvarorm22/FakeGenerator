@@ -1,6 +1,6 @@
 # FakeGenerator
 
-Aplicación que simula la generación automática y aleatoria y el envío del estado del rango de sensores pasados por parámetro.
+Aplicación que simula tanto la generación automática y aleatoria como el envío del estado del rango de sensores pasados por parámetro.
 
 En este ejemplo el programa creará 25.000 sensores que estarán enviando continuamente su estado, el cual está compuesto por los campos movimiento, humo, temperatura actual y temperatura máxima:
 
