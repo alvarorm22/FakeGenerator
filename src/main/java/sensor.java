@@ -51,10 +51,11 @@ public class sensor {
 
 
     public void subirTemperatura(){
-        temperatura+=10;
+        int aleatorio = (int) Math.floor(Math.random()*25) + 1;
+        temperatura+=aleatorio;
     }
     public void bajarTemperatura(){
-        temperatura-=2;
+        temperatura-=10;
     }
     public void addHumo(){
         countHumo++;

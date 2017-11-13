@@ -38,7 +38,7 @@ public class Main {
                 double aleatorio = Math.floor(Math.random()*101);
                 System.out.println("Aleatorio : "+aleatorio);
                 if (i%10000==0 && i>1) generarAlarma(aleatorio, idMax,idMin, sensores, controlMovimiento,controlHumo,controlTemperatura,i);
-                if (i%20000==0 && i>1) limpiarAlarmas(controlHumo,controlMovimiento,controlTemperatura);
+                if (i%12000==0 && i>1) limpiarAlarmas(controlHumo,controlMovimiento,controlTemperatura);
             }
         }
 
@@ -69,12 +69,7 @@ public class Main {
             }
 
         }
-        /*else if (aleatorio >= 0 && aleatorio < 19) {
-            bajarTemperatura(sensores[sens]);
-            System.out.println("Baja la temperatura para el sensor con id : "+ sensores[sens].getIdSensor() +
-            ". La temperatura es de "+ sensores[sens].getTemperatura()+
-                    " || La temperatura máxima es : "+ sensores[sens].getTempMax());
-        }*/
+
 
     }
 
