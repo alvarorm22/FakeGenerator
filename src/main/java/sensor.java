@@ -15,7 +15,7 @@ public class sensor {
     boolean humo;
     int tempMaxima;
     int countHumo;
-
+    int counTemperatura;
 
     public sensor(int id) {
         idSensor=id;
@@ -26,6 +26,7 @@ public class sensor {
         temperatura=0;
         tempMaxima = (int) Math.floor(Math.random()*50) +1;
         countHumo=0;
+        counTemperatura=0;
 
     }
 
@@ -66,6 +67,9 @@ public class sensor {
     public int getCountHumo(){
         return countHumo;
     }
+    public void resetCountTemperatura() { counTemperatura = 0;}
+    public int getCountTemperatura() { return counTemperatura; }
+    public void addTemperatura(){ counTemperatura++; }
 
 
 }

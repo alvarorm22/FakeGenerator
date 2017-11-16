@@ -37,8 +37,9 @@ public class Main {
                 sendPost(sensores[i], "notok");
                 double aleatorio = Math.floor(Math.random()*101);
                 System.out.println("Aleatorio : "+aleatorio);
-                if (i%10000==0 && i>1) generarAlarma(aleatorio, idMax,idMin, sensores, controlMovimiento,controlHumo,controlTemperatura,i);
+                if (i%5000==0 && i>1) generarAlarma(aleatorio, idMax,idMin, sensores, controlMovimiento,controlHumo,controlTemperatura,i);
                 if (i%12000==0 && i>1) limpiarAlarmas(controlHumo,controlMovimiento,controlTemperatura);
+                controlAlarmasActivas(sensores[i], controlTemperatura,controlMovimiento,controlHumo);
             }
         }
 
@@ -147,15 +148,43 @@ public class Main {
     }
     public static void subirTemperatura(sensor s, Queue <sensor> controlTemperatura) throws Exception {
         s.subirTemperatura();
-        if(s.getTemperatura()>=s.getTempMax()){
-            controlTemperatura.add(s);
+        s.addTemperatura();
+        if (s.getTemperatura() >= s.getTempMax()) {
+            if (s.getCountTemperatura() >= 3) {
+                controlTemperatura.add(s);
+                s.resetCountTemperatura();
+            }
         }
     }
+        public static void controlAlarmasActivas(sensor s, Queue <sensor> controlTemperatura, Queue <sensor>
+                                          controlMovimiento, Queue <sensor> controlHumo){
+            if (s.getTemperatura()>=s.getTempMax()){
+                s.addTemperatura();
+                if (s.getCountTemperatura() >= 3) {
+                    System.out.println("Alarma de temperatura generada x3 para el sensor con id : "+ s.getIdSensor() );
+                    controlTemperatura.add(s);
+                    s.resetCountTemperatura();
+                }
+            }
+
+            if (s.getHumo()){
+                s.addHumo();
+                if(s.getCountHumo()>=3) {
+                    System.out.println("Alarma de humo generada x3 para el sensor con id : "+ s.getIdSensor() );
+                    controlHumo.add(s);
+                    s.resetCountHumo();
+                }
+            }
+
+    }
+
+
+
+
+
+
     public static void bajarTemperatura(sensor s){
         s.bajarTemperatura();
     }
-
-
-
 
 }
