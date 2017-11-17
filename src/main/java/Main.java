@@ -42,6 +42,10 @@ public class Main {
                 controlAlarmasActivas(sensores[i], controlTemperatura,controlMovimiento,controlHumo);
             }
         }
+        /*for (int m =0; m<50000; m++){
+            sendPost(sensores[m], "ok");
+        }*/
+
 
     }
 
